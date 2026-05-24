@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nodemine</title>
+  <link rel="icon" type="image/x-icon" href="./img/logo-small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #1e1d23;
+      --bg-card: #28262d;
+      --primary: #172944;
+      --gold: #ffae00;
+      --text: #d1d5db;
+      --text-dim: #6b7280;
+      --border: rgba(255, 174, 0, 0.1); /* Subtle gold tint on borders */
+      --font-main: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      /* Stronger emphasis on Primary #172944 in the background gradient */
+      background: radial-gradient(circle at center, var(--primary) 0%, var(--bg-dark) 70%, #121216 100%);
+      color: var(--text);
+      font-family: var(--font-main);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      cursor: none;
+    }
+
+    /* BACKGROUND PARTICLES */
+    #bg-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    /* CURSOR */
+    #cursor { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s; }
+    #cursor-ring { width: 30px; height: 30px; border: 1px solid rgba(255, 174, 0, 0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease-out; }
+
+    /* MAIN CONTAINER */
+    .container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 500px;
+      padding: 40px;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 35px;
+      text-decoration: none;
+    }
+
+    .logo svg { 
+        width: 44px; height: 44px; flex-shrink: 0; 
+        filter: drop-shadow(0 0 10px rgba(255, 174, 0, 0.3)); 
+    }
+    
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin: 0;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* ACCESS FORM */
+    .access-form {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      text-align: left;
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle accent line on top of form */
+    .access-form::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--gold); /* Switched to gold for emphasis */
+      opacity: 0.8;
+      margin-bottom: 8px;
+      letter-spacing: 0.08em;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: #1a191f;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: #212026;
+      box-shadow: 0 0 10px rgba(255, 174, 0, 0.05);
+    }
+
+    .btn {
+      width: 100%;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: none;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 174, 0, 0.4);
+      background: #ffbd33;
+    }
+
+    footer {
+      margin-top: 48px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+  <div class="logo">
+    <img viewBox="0 0 800 800" src="./img/logo-small.png" width=40px>
+      
+    </img>
+    <div class="logo-text">Nodemine</div>
+  </div>
+
+
+  <h1>Invitation Only</h1>
+  <p>Nodemine has transitioned to a private hosting collective. We are currently only accepting established communities and partners.</p>
+
+  <div class="access-form">
+    <form id="accessForm">
+      <div class="form-group">
+        <label>Identity / Project Name</label>
+        <input type="text" id="projectName" placeholder="e.g. Shadow Community" required>
+      </div>
+      <div class="form-group">
+        <label>Contact (Discord or Email)</label>
+        <input type="text" id="contactInfo" placeholder="user@example.com" required>
+      </div>
+      <div class="form-group">
+        <label>Requirements</label>
+        <textarea id="requirements" rows="3" placeholder="Tell us about your requirements..."></textarea>
+      </div>
+      <button type="submit" class="btn">Request Access</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2026 NODEMINE.NET ALL RIGHTS RESERVED.
+  </footer>
+</div>
+
+<script>
+  // EMAIL CLIENT POP LOGIC
+  document.getElementById('accessForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('projectName').value;
+    const contact = document.getElementById('contactInfo').value;
+    const reqs = document.getElementById('requirements').value;
+    
+    const subject = encodeURIComponent(`Nodemine Access Request: ${name}`);
+    const body = encodeURIComponent(
+      `Project/Identity: ${name}\n` +
+      `Contact Method: ${contact}\n\n` +
+      `Detailed Requirements:\n${reqs}`
+    );
+    
+    window.location.href = `mailto:support@nodemine.net?subject=${subject}&body=${body}`;
+  });
+
+  // CURSOR LOGIC
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  });
+
+  // Background Particles
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  const setCanvasSize = () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  };
+  window.addEventListener('resize', setCanvasSize);
+  setCanvasSize();
+
+  const particles = Array.from({ length: 60 }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    size: Math.random() * 1.8,
+    speed: Math.random() * 0.3 + 0.1,
+    opacity: Math.random() * 0.5 + 0.2
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.y -= p.speed;
+      if (p.y < 0) p.y = h;
+      
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 174, 0, ${p.opacity})`;
+      ctx.shadowBlur = 5;
+      ctx.shadowColor = '#ffae00';
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+
+</body>
+</html>

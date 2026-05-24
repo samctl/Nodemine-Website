@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodemine - Affordable Hosting for your Gameserver</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo-small.png">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="keywords" content="Game server hosting, gmod hosting, Garry's Mod Hosting, Garry's Mod Server Hosting, garrysmod server host, Discord bot hosting, Multiplayer gaming, Low latency, High performance, Reliable infrastructure, high uptime, Control panel, Developer-friendly, Gaming community, Discord API, Bot development, 24/7 support, Dedicated servers, Fast response times, Affordable hosting, Customizable plans, Mod support, Voice communication, Real-time chat">
+    <meta name="description" content="Nodemine is here with the aim to give you the best server hosting we can possibly provide. With our 24/7 servers, you can keep your server up without needing to setup anything! No port forwarding, no self hosting, we have everything for you to get you ready to go!">
+</head>
+
+<body>
+    <div class="animated-bg"></div>
+    <header id="header">
+        <div class="container">
+            <div class="logo-section">
+                <a href="/"><img class="logo" src="img/logo.png" width="42px"></a>
+            </div>
+            <div class="header-buttons">
+                <a href="https://ops.nodemine.net"><button class="button accesspanelButton"><i class="fa fa-terminal"></i> Access Panel</button></a>
+                <a href="https://nodemine.net/contact"><button class="button clientareaButton"><i class="fa fa-user"></i> Client Area</button></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Game Hosting Perfected</h1>
+                <h2>Affordable, Reliable, and High Performance</h2>
+                <a href="https://nodemine.net/contact" class="button hero-button">Become a Client</a>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="features-container">
+                <h2 class="section-title">Why Choose Us?</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fa fa-dollar"></i>
+                        <h3>Affordable Hosting</h3>
+                        <p>Get the best value for your money with our competitive pricing.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fa fa-server"></i>
+                        <h3>High Uptime</h3>
+                        <p>Experience minimal downtime with our reliable infrastructure.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fa fa-ticket"></i>
+                        <h3>Prioritized Support</h3>
+                        <p>Our support team is always ready to help you with any issues.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <div class="quote-container">
+                <div class="quote">
+                    <p>"I’ve been with many hosting a before, but this one is by far the best one with what you get for certain prices, 100% would host here again!"</p>
+                    <h3>- HLW Gaming</h3>
+                </div>
+            </div>
+        </section>
+
+
+        
+
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="https://discord.gg/tCsphrA3" target="_blank">Discord</a></li>
+                        <li><a href="https://twitter.com/nodemine" target="_blank">Twitter</a></li>
+                        <li><a href="tbd" target="_blank">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="terms">Terms of Service</a></li>
+                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="https://nodemine.net/contact">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="https://ops.nodemine.net">Game Panel</a></li>
+                        <li><a href="https://nodemine.net/contact">Client Area</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Nodemine 2026. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.feature, .testimonial');
+            elements.forEach(el => {
+                el.classList.add('fade-in');
+            });
+    
+            const shapes = ['square', 'cross', 'triangle'];
+            const colors = ['rgba(255, 174, 0, 0.5)', 'rgba(0, 197, 185, 0.5)']; 
+            const positions = [
+    { x: 0.1, y: 0.1 },  
+    { x: 0.9, y: 0.1 },  
+    { x: 0.05, y: 0.95 }, 
+    { x: 0.95, y: 0.95 }, 
+    { x: 0.5, y: 0.1 },   
+    { x: 0.5, y: 0.9 },   
+    { x: 0.1, y: 0.5 },   
+    { x: 0.9, y: 0.5 },   
+    { x: 0.25, y: 0.75 },
+    { x: 0.75, y: 0.75 }, 
+    { x: 0.25, y: 0.25 }, 
+    { x: 0.75, y: 0.25 }
+    
+];
+
+
+
+
+
+    
+            positions.forEach(pos => {
+                let shapeLeft = document.createElement('div');
+                let shapeRight = document.createElement('div');
+                
+                let shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+                let color = colors[Math.floor(Math.random() * colors.length)];
+                
+                shapeLeft.classList.add('bg-shape', shapeType);
+                shapeRight.classList.add('bg-shape', shapeType);
+    
+                shapeLeft.style.left = `${pos.x * 100}vw`;
+                shapeLeft.style.top = `${pos.y * 100}vh`;
+                shapeLeft.style.backgroundColor = color;
+    
+                shapeRight.style.right = `${pos.x * 100}vw`;
+                shapeRight.style.top = `${pos.y * 100}vh`;
+                shapeRight.style.backgroundColor = color;
+    
+                document.querySelector('.animated-bg').appendChild(shapeLeft);
+                document.querySelector('.animated-bg').appendChild(shapeRight);
+            });
+    
+            const header = document.getElementById('header');
+            const sticky = header.offsetTop;
+    
+            function toggleStickyHeader() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            }
+    
+            window.onscroll = () => {
+                toggleStickyHeader();
+            };
+    
+            // Initial check in case the user starts mid-page
+            toggleStickyHeader();
+        });
+    </script>
+    
+</body>
+
+</html>
