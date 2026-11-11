@@ -137,6 +137,34 @@
     .section-head h2::after { content: ""; display: block; width: 46px; height: 3px; margin: 14px auto 0; border-radius: 2px; background: var(--amber); }
     .section-head p { margin: 16px 0 0; }
 
+    /* ---------- Legal pages ---------- */
+    .legal { padding: 68px 0 84px; }
+    .legal .section-head { text-align: left; max-width: 920px; margin-bottom: 24px; }
+    .legal .section-head h2::after { margin-left: 0; margin-right: 0; }
+
+    .legal-card {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 34px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(28, 59, 90, 0.52);
+    }
+
+    .legal-card h3 { margin-top: 28px; font-size: 1.16rem; }
+    .legal-card h3:first-of-type { margin-top: 0; }
+    .legal-card p { margin: 12px 0 0; color: var(--soft); }
+
+    .notice-box {
+      background: rgba(255, 174, 0, 0.08);
+      border-left: 4px solid rgba(255, 174, 0, 0.8);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      color: var(--soft);
+      line-height: 1.7;
+    }
+
     .icon {
       display: grid;
       place-items: center;
@@ -328,6 +356,8 @@
     @media (max-width: 700px) {
       section { padding: 62px 0; }
       .hero { padding: 64px 0 72px; }
+      .legal { padding: 50px 0 62px; }
+      .legal-card { padding: 24px 20px; }
 
       .pillars { grid-template-columns: 1fr; gap: 36px; }
       .pillar { border-left: none; border-top: 1px solid var(--line); padding: 36px 8px 0; }
