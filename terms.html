@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="./css/stylesheet.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta name="keywords" content="Game server hosting, gmod hosting, Garry's Mod Hosting, Garry's Mod Server Hosting, garrysmod server host, Discord bot hosting, Multiplayer gaming, Low latency, High performance, Reliable infrastructure, high uptime, Control panel, Developer-friendly, Gaming community, Discord API, Bot development, 24/7 support, Dedicated servers, Fast response times, Affordable hosting, Customizable plans, Mod support, Voice communication, Real-time chat">
     <meta name="description" content="Nodemine is here with the aim to give you the best server hosting we can possibly provide. With our 24/7 servers, you can keep your server up without needing to setup anything! No port forwarding, no self hosting, we have everything for you to get you ready to go!">
     <style>
@@ -26,21 +26,27 @@
 </head>
 
 <body>
-    <header id="header" style="background-color: #172944;">
-        <div class="container">
-            <div class="logo-section">
-                <a href="/"><img class="logo" src="img/logo.png" width="42px"></a>
-            </div>
-            <div class="header-buttons">
-                 <a href="https://ops.nodemine.net"><button class="button accesspanelButton"><i class="fa fa-terminal"></i> Access Panel</button></a>
-                <a href="https://nodemine.net/contact"><button class="button clientareaButton"><i class="fa fa-user"></i> Client Area</button></a>
-            </div>
+    <header id="header">
+        <div class="wrap nav">
+            <a href="https://nodemine.net/" aria-label="Nodemine home">
+                <img src="https://nodemine.net/img/logo.png" alt="Nodemine">
+            </a>
+            <nav class="nav-links" aria-label="Main">
+                <a href="https://nodemine.net/#why">Why Us</a>
+                <a href="https://nodemine.net/#hosting">Hosting</a>
+                <a href="https://nodemine.net/#cyber-essentials">Security</a>
+                <a href="https://nodemine.net/#faq">FAQ</a>
+                <div class="nav-buttons">
+                    <a class="btn" href="https://ops.nodemine.net" aria-label="Access Panel"><i class="fa-solid fa-server"></i><span class="label">Access Panel</span></a>
+                    <a class="btn btn-teal" href="https://nodemine.net/contact" aria-label="Client Area"><i class="fa-solid fa-user"></i><span class="label">Client Area</span></a>
+                </div>
+            </nav>
         </div>
     </header>
 
     <main>
         <section class="terms-section">
-            <div class="container">
+            <div class="wrap">
                 <div class="terms-content">
                     <h2 class="section-title">Terms of Service</h2>
                     <p>Last Updated [24/05/2026]</p>
@@ -129,79 +135,42 @@
         </section>
     </main>
 
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
+    <footer>
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <h4>Community</h4>
                     <ul>
                         <li><a href="https://discord.gg/tCsphrA3" target="_blank">Discord</a></li>
                         <li><a href="https://twitter.com/nodemine" target="_blank">Twitter</a></li>
                         <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div>
+                    <h4>Company</h4>
                     <ul>
-                        <li><a href="terms">Terms of Service</a></li>
-                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="https://nodemine.net/terms">Terms of Service</a></li>
+                        <li><a href="https://nodemine.net/privacy">Privacy Policy</a></li>
                         <li><a href="https://nodemine.net/contact">Support</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div>
+                    <h4>Hosting</h4>
                     <ul>
                         <li><a href="https://ops.nodemine.net">Game Panel</a></li>
                         <li><a href="https://nodemine.net/contact">Client Area</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; Nodemine.net 2026. All Rights Reserved.</p>
-            </div>
+            <p class="copyright">&copy; Nodemine 2026. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.feature, .testimonial');
-            elements.forEach(el => {
-                el.classList.add('fade-in');
-            });
-
-            const shapes = ['square', 'cross', 'triangle'];
-            const colors = ['rgba(255, 174, 0, 0.5)', 'rgba(0, 197, 185, 0.5)']; 
-            const positions = [
-                { x: 0.1, y: 0.2 },
-                { x: 0.3, y: 0.4 },
-                { x: 0.7, y: 0.2 },
-                { x: 0.9, y: 0.4 },
-                { x: 0.2, y: 0.6 },
-                { x: 0.8, y: 0.6 },
-                { x: 0.15, y: 0.8 },
-                { x: 0.35, y: 0.1 },
-                { x: 0.79, y: 0.3 }
-            ];
-
-            positions.forEach(pos => {
-                let shapeLeft = document.createElement('div');
-                let shapeRight = document.createElement('div');
-                
-                let shapeType = shapes[Math.floor(Math.random() * shapes.length)];
-                let color = colors[Math.floor(Math.random() * colors.length)];
-                
-                shapeLeft.classList.add('bg-shape', shapeType);
-                shapeRight.classList.add('bg-shape', shapeType);
-
-                shapeLeft.style.left = `${pos.x * 100}vw`;
-                shapeLeft.style.top = `${pos.y * 100}vh`;
-                shapeLeft.style.backgroundColor = color;
-
-                shapeRight.style.right = `${pos.x * 100}vw`;
-                shapeRight.style.top = `${pos.y * 100}vh`;
-                shapeRight.style.backgroundColor = color;
-
-                document.querySelector('.animated-bg').appendChild(shapeLeft);
-                document.querySelector('.animated-bg').appendChild(shapeRight);
-            });
-        });
+        var header = document.getElementById('header');
+        function onScroll() { header.classList.toggle('scrolled', window.scrollY > 20); }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
     </script>
 </body>
 
